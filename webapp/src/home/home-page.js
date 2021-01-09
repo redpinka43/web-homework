@@ -5,6 +5,7 @@ export function Home () {
     <Fragment>
       {/* <Link to='/another'>Another route</Link> */}
       <div>Ready, steady, go!</div>
+      <p>Here is a page I guess.</p>
     </Fragment>
   )
 }
