@@ -1,71 +1,16 @@
-import React, { useState } from 'react'
-import { Button } from 'react-bootstrap'
-import { useMutation } from 'react-apollo'
-import gql from 'graphql-tag'
+import React, { Fragment } from 'react'
 import { css } from '@emotion/core'
 import PropTypes from 'prop-types'
 
-AddTransactionForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+TransactionForm.propTypes = {
+  formState: PropTypes.object,
+  setFormState: PropTypes.func.isRequired,
+  formId: PropTypes.string,
+  whiteBorder: PropTypes.bool
 }
 
-export default function AddTransactionForm (props) {
-  const ADD_TRANSACTION = gql`
-        mutation AddTransaction(
-            $user_id: String,
-            $amount: Float,
-            $credit: Boolean,
-            $debit: Boolean,
-            $description: String,
-            $merchant_id: String
-        ) {
-            addTransaction(user_id: $user_id, amount: $amount, credit: $credit,
-                debit: $debit, description: $description, 
-                merchant_id: $merchant_id) {
-            id
-            user_id
-            amount
-            credit
-            debit
-            description
-            merchant_id
-            }
-        }
-    `
-
-  const [formState, setFormState] = useState({
-    user_id: '',
-    amount: '',
-    credit: false,
-    debit: false,
-    description: '',
-    merchant_id: ''
-  })
-
-  const [createTransaction] = useMutation(ADD_TRANSACTION, {
-    variables: {
-      user_id: formState.user_id,
-      amount: formState.amount,
-      credit: formState.credit,
-      debit: formState.debit,
-      description: formState.description,
-      merchant_id: formState.merchant_id
-    }
-  })
-
-  function onSubmitForm () {
-    // Clear form
-    setFormState({
-      user_id: '',
-      amount: '',
-      credit: false,
-      debit: false,
-      description: '',
-      merchant_id: ''
-    })
-    
-    props.onSubmit()
-  }
+export default function TransactionForm (props) {
+  let { formState, setFormState, formId } = props
 
   function get2DecimalPlaces (numStr) {
     let parsedFloat = parseFloat(numStr)
@@ -97,18 +42,14 @@ export default function AddTransactionForm (props) {
     })
   }
 
-  function inputField ({ onChangeHandler, placeholder, type, value }) {
-    return (
-      <input
-        css={roundedInputField}
-        form='form1'
-        onChange={onChangeHandler}
-        placeholder={placeholder}
-        required
-        type={type}
-        value={value}
-      />
-    )
+  function getCreditOrDebit () {
+    if (formState.credit) {
+      return 'credit'
+    } else if (formState.debit) {
+      return 'debit'
+    } else {
+      return ''
+    }
   }
 
   inputField.propTypes = {
@@ -118,8 +59,30 @@ export default function AddTransactionForm (props) {
     value: PropTypes.any
   }
 
+  function getInputFieldCss () {
+    if (props.whiteBorder === true) {
+      return ([roundedInputField, whiteBorder])
+    } else {
+      return roundedInputField
+    }
+  }
+
+  function inputField ({ onChangeHandler, placeholder, type, value }) {
+    return (
+      <input
+        css={getInputFieldCss()}
+        form={'form-' + formId}
+        onChange={onChangeHandler}
+        placeholder={placeholder}
+        required
+        type={type}
+        value={value}
+      />
+    )
+  }
+
   return (
-    <tr css={rowStyle}>
+    <Fragment>
       <td>{
         // Amount
         inputField({
@@ -170,53 +133,31 @@ export default function AddTransactionForm (props) {
       </td>
       <td>
         {/* Credit/Debit */}
+        {/* eslint-disable */}
         <select
           form='form1'
-          onBlur={(e) =>
+          onChange={(e) =>
             setCreditOrDebit(e.target.value)
           }
+          /* eslint-enable */
           required
+          value={getCreditOrDebit()}
         >
           <option value=''>Credit/Debit</option>
           <option value='credit'>Credit</option>
           <option value='debit'>Debit</option>
         </select>
       </td>
-      <td>
-        <Button form='form1' css={buttonCss}
-          type='submit'
-        ><i className='fa fa-plus'/> Add</Button>
-        <form id='form1' onSubmit={(e) => {
-          e.preventDefault()
-          createTransaction()
-          onSubmitForm()
-        }} />
-      </td>
-    </tr>
+    </Fragment>
   )
 }
 
 /* ---------- Styles ----------- */
-const rowStyle = css`
-  background-color: #e0e0e0 !important;
-
-  & td { 
-    border-bottom: 2px solid #cfcfcf;
-    padding: 0;
-    padding-top: 12px;
-    padding-bottom: 2px;
-    padding-left: 10px;
-  }
-`
 const roundedInputField = css`
   border-radius: 5px;
   border-width: 1px;
-  border-color: white;
+  border-color:  #cfcfcf;
 `
-const buttonCss = css`
-  position: relative;
-  bottom: 5px;
-  margin-right: 3px;
-  padding-left: 12px;
-  padding-right: 12px;
+const whiteBorder = css`
+  border-color: white;
 `

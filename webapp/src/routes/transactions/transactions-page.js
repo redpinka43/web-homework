@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import TransactionsList from './transactions-list'
+import React, { Fragment, useState } from 'react'
+import { css } from '@emotion/core'
+import TransactionsList from '../../components/transactions/transactions-list'
 import { useQuery } from 'react-apollo'
 import gql from 'graphql-tag'
-// import { css } from '@emotion/core'
 
 export function Transactions () {
   const GET_TRANSACTIONS = gql`
@@ -20,8 +20,7 @@ export function Transactions () {
   `
 
   const [submitSuccess, setSubmitSuccess] = useState(false)
-  const { loading, data, error, refetch } = useQuery(GET_TRANSACTIONS)
-  // useEffect(() => { refetch() }, [submitSuccess])
+  const { loading, data, error, refetch: refreshList } = useQuery(GET_TRANSACTIONS)
 
   function submitSuccessAlert () {
     if (submitSuccess) {
@@ -31,28 +30,34 @@ export function Transactions () {
         </div>
       )
     }
+    else {
+      return (
+        <div css={submitSuccessAlertPlaceholder}></div>
+      )
+    }
   }
 
   return (
-    <div className='container'>
+    <Fragment>
       <h2>Transactions</h2>
       {submitSuccessAlert()}
-      <TransactionsList 
+      <TransactionsList
+        data={data}
+        error={error}
+        loading={loading}
         onSubmit={
           () => {
             setSubmitSuccess(true)
-            refetch()
+            refreshList()
           }
-        } 
-        loading={loading} 
-        data={data}
-        error={error}
-        />
-    </div>
+        }
+        refreshList={() => refreshList()}
+      />
+    </Fragment>
   )
 }
 
 /* ---------- Styles ----------- */
-// const aStyle = css `
-//   color: blue;
-// `
+const submitSuccessAlertPlaceholder = css`
+  padding: 33px;
+`
