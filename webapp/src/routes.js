@@ -1,65 +1,29 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { css } from '@emotion/core'
-import { Home } from './home'
-import { Transactions } from './transactions'
-import { Analytics } from './analytics'
-import { Settings } from './settings'
+import { Home } from './routes/home'
+import { Transactions } from './routes/transactions'
+import { Analytics } from './routes/analytics'
+import { Settings } from './routes/settings'
+import Sidebar from './components/sidebar'
 
-function AppRouter () {
+export default function AppRouter () {
   return (
     <Router>
-      <div css={layoutStyle}>
-        <nav css={navStyle}>
-          <ul >
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/transactions'>Transactions</Link>
-            </li>
-            <li>
-              <Link to='/analytics'>Analytics</Link>
-            </li>
-            <li>
-              <Link to='/settings'>Settings</Link>
-            </li>
-          </ul>
-        </nav>
-        <div className='main-content' css={contentStyle}>
-          <Route component={Home} exact path='/' />
-          <Route component={Transactions} exact path='/transactions' />
-          <Route component={Analytics} exact path='/analytics' />
-          <Route component={Settings} exact path='/settings' />
-          {/* <Route component={() => (<div>Content for /another route</div>)} exact path='/another' /> */}
-        </div>
+      <Sidebar />
+      <div css={contentStyle}>
+        <Route component={Home} exact path='/' />
+        <Route component={Transactions} exact path='/transactions' />
+        <Route component={Analytics} exact path='/analytics' />
+        <Route component={Settings} exact path='/settings' />
       </div>
     </Router>
   )
 }
 
-export default AppRouter
-
-const layoutStyle = css`
-    display: grid;
-    grid-row-gap: 24px;
-    padding: 8px;
-`
-
-const navStyle = css`
-  grid-row: 1;
-
-  & > ul {
-      display: flex;
-      flex-direction: row;
-      list-style-type: none;
-  }
-  
-  & > ul > li:not(:first-child) {
-    margin-left: 16px;
-  }
-`
+/* ---------- Styles ----------- */
 
 const contentStyle = css`
-  grid-row: 2;
+  margin: 17px;
+  margin-left: 265px;
 `
