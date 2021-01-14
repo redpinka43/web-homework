@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { css } from '@emotion/core'
+import PropTypes from 'prop-types'
 
 export default function Sidebar () {
   const [location, setLocation] = useState(window.location.pathname)
 
-  function LinkItem (props) {
-    let {route, name} = props
+  LinkItem.propTypes = {
+    route: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }
 
-    console.log('location = ' + location)
+  function LinkItem (props) {
+    let { route, name } = props
+
     return (
       <li className={(location === route) ? 'active' : null}>
-        <Link to={route}
-          onClick={() => setLocation(route)}  
+        <Link onClick={() => setLocation(route)}
+          to={route}
         >{name}</Link>
       </li>
     )
@@ -24,10 +29,10 @@ export default function Sidebar () {
         <h3>TransactionsApp</h3>
       </div>
       <ul className='list-unstyled components'>
-        <LinkItem route='/' name='Home'/>
-        <LinkItem route='/transactions' name='Transactions'/>
-        <LinkItem route='/analytics' name='Analytics'/>
-        <LinkItem route='/settings' name='Settings'/>
+        <LinkItem name='Home' route='/' />
+        <LinkItem name='Transactions' route='/transactions' />
+        <LinkItem name='Analytics' route='/analytics' />
+        <LinkItem name='Settings' route='/settings' />
       </ul>
     </nav>
   )
@@ -53,7 +58,7 @@ const sidebarStyle = css`
   color: ${colors.lightGrey1};
 
   h3 {
-    font-size: 1.5em;
+    font-size: 1.6em;
     color: ${colors.white};
   }
 
@@ -64,12 +69,13 @@ const sidebarStyle = css`
   }
   .sidebar-header {
     padding: 20px;
+    padding-top: 27px;
     padding-left: 15px;
     background: ${colors.darkGrey1};
   }
 
   ul.components {
-    padding: 20px 0;
+    padding: 10px 0;
     border-bottom: 1px solid ${colors.darkGrey1};
   }
 

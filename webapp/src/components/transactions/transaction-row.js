@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { useMutation } from 'react-apollo'
 import TransactionForm from './transaction-form'
 import { UPDATE_TRANSACTION, DELETE_TRANSACTION } from '../../utils/gql-queries'
+import Number from '../../utils/roman-number/number'
 
 TransactionRow.propTypes = {
   transaction: PropTypes.shape({
@@ -90,7 +91,7 @@ export default function TransactionRow (props) {
   } else {
     return (
       <tr>
-        <td>{formState.amount}</td>
+        <td>{Number(formState.amount)}</td>
         <td>{formState.user_id}</td>
         <td>{formState.merchant_id}</td>
         <td>{formState.description}</td>

@@ -29,10 +29,9 @@ export function Transactions () {
           Added transaction
         </div>
       )
-    }
-    else {
+    } else {
       return (
-        <div css={submitSuccessAlertPlaceholder}></div>
+        <div css={submitSuccessAlertPlaceholder} />
       )
     }
   }
