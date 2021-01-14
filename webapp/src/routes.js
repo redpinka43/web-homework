@@ -20,8 +20,7 @@ export default function AppRouter () {
       <RomanNumberContext.Provider value={{ romanNumber, setRomanNumber }}>
         <Sidebar />
         <div css={contentStyle}>
-          <Route component={Home} exact path='/' />
-          <Route component={Transactions} exact path='/transactions' />
+          <Route component={Transactions} exact path='/' />
           <Route component={Analytics} exact path='/analytics' />
           <Route component={Settings} exact path='/settings' />
         </div>

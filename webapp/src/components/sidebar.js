@@ -30,7 +30,6 @@ export default function Sidebar () {
       </div>
       <ul className='list-unstyled components'>
         <LinkItem name='Home' route='/' />
-        <LinkItem name='Transactions' route='/transactions' />
         <LinkItem name='Analytics' route='/analytics' />
         <LinkItem name='Settings' route='/settings' />
       </ul>
