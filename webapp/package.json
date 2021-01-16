@@ -3,14 +3,15 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -d",
-    "start": "webpack-dev-server -d --hot"
+    "start": "webpack-dev-server -d --hot",
+    "test": "jest"
   },
   "jest": {
     "setupFiles": [
-      "../../testSetup.js"
+      "../test.setup.js"
     ],
     "setupFilesAfterEnv": [
-      "../../jest.config.framework.js"
+      "../jest.config.framework.js"
     ],
     "globals": {
       "__DivvyEnvironment": true
@@ -23,7 +24,7 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/assetMock.js"
     },
     "snapshotSerializers": [
-      "jest-emotion/serializer"
+      "@emotion/jest/serializer"
     ],
     "moduleFileExtensions": [
       "js",
@@ -36,7 +37,12 @@
     }
   },
   "dependencies": {
+    "@apollo/react-components": "^4.0.0",
+    "@apollo/react-hooks": "^4.0.0",
+    "@apollo/react-testing": "^4.0.0",
+    "@babel/runtime-corejs2": "^7.12.5",
     "@emotion/core": "10.0.10",
+    "@emotion/jest": "^11.1.0",
     "@emotion/styled": "10.0.12",
     "apollo-cache-inmemory": "1.6.2",
     "apollo-client": "2.6.10",
@@ -45,11 +51,13 @@
     "apollo-link-http": "1.5.14",
     "apollo-link-state": "0.4.2",
     "axios": "^0.21.1",
+    "babel-runtime": "^6.26.0",
     "bootstrap": "^4.5.3",
     "emotion-theming": "10.0.10",
     "graphql": "14.3.1",
     "graphql-tag": "^2.10.1",
     "history": "^5.0.0",
+    "jest-transform-graphql": "^2.1.0",
     "lint": "^0.7.0",
     "prop-types": "^15.7.2",
     "react": "16.8.6",
@@ -83,13 +91,14 @@
     "@babel/plugin-transform-arrow-functions": "7.2.0",
     "@babel/plugin-transform-async-to-generator": "7.4.4",
     "@babel/plugin-transform-regenerator": "7.4.5",
-    "@babel/plugin-transform-runtime": "7.4.4",
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/plugin-transform-template-literals": "7.4.4",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.4.4",
-    "@babel/runtime": "7.4.5",
+    "@babel/runtime": "^7.12.5",
     "@emotion/babel-preset-css-prop": "10.0.9",
+    "@testing-library/react": "^11.2.3",
     "babel-eslint": "10.0.1",
     "babel-jest": "24.8.0",
     "babel-loader": "8.0.6",
@@ -97,7 +106,7 @@
     "babel-plugin-dynamic-import-webpack": "1.1.0",
     "babel-plugin-emotion": "10.0.13",
     "babel-plugin-transform-require-context": "0.1.1",
-    "babel-polyfill": "6.26.0",
+    "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "3.0.0",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
@@ -122,7 +131,7 @@
     "html-webpack-plugin": "3.2.0",
     "husky": "2.4.1",
     "jest": "24.8.0",
-    "jest-chain": "1.1.2",
+    "jest-chain": "^1.1.5",
     "jest-dom": "3.5.0",
     "jest-expect-message": "1.0.2",
     "jest-fetch-mock": "2.1.2",
@@ -136,7 +145,7 @@
     "react-stub-context": "0.8.1",
     "react-test-renderer": "16.8.6",
     "react-testing-library": "8.0.1",
-    "regenerator-runtime": "0.13.2",
+    "regenerator-runtime": "^0.13.7",
     "webpack": "4.33.0",
     "webpack-cli": "3.3.4",
     "webpack-dev-server": "^3.11.1"

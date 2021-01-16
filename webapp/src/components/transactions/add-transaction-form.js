@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
-import { useMutation } from 'react-apollo'
+import { useMutation } from '@apollo/react-hooks'
 import { css } from '@emotion/core'
 import PropTypes from 'prop-types'
 import TransactionForm from './transaction-form'
@@ -21,7 +21,6 @@ export default function AddTransactionForm (props) {
     merchant_id: ''
   }
   const [formState, setFormState] = useState(defaultFormState)
-
   const [createTransaction] = useMutation(ADD_TRANSACTION, {
     variables: {
       user_id: formState.user_id,

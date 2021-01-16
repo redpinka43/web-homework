@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { css } from '@emotion/core'
 import TransactionsList from '../../components/transactions/transactions-list'
-import { useQuery } from 'react-apollo'
+import { useQuery } from '@apollo/react-hooks'
 import { GET_TRANSACTIONS } from '../../utils/gql-queries'
 
 export function Transactions () {

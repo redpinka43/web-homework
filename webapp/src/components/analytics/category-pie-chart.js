@@ -1,12 +1,11 @@
 import React from 'react'
 import { PieChart } from 'react-minimal-pie-chart'
 import { css } from '@emotion/core'
-import { useQuery } from 'react-apollo'
+import { useQuery } from '@apollo/react-hooks'
 import { GET_TRANSACTIONS } from '../../utils/gql-queries'
 import { Spinner } from 'react-bootstrap'
 
 export default function CategoryPieChart () {
-  
   // const theData = [
   //   { title: 'One', value: 10, color: '#E38627' },
   //   { title: 'Two', value: 15, color: '#C13C37' },
@@ -21,7 +20,7 @@ export default function CategoryPieChart () {
     'Consulting': { title: 'Consulting', color: '#a99ea0', value: 0, sum: 0 },
     'Real estate': { title: 'Real estate', color: '#82d4bb', value: 0, sum: 0 }
   }
-  
+
   const { loading, data, error } = useQuery(GET_TRANSACTIONS)
 
   function tallyCategoryData () {
@@ -30,11 +29,11 @@ export default function CategoryPieChart () {
     data.transactions.forEach(transaction => {
       categories[transaction.category].sum += transaction.amount
       amountTotal += transaction.amount
-    });
+    })
 
     for (let str in categories) {
       categories[str].value = categories[str].sum / amountTotal * 100
-    }    
+    }
   }
 
   if (loading) {
@@ -63,9 +62,9 @@ export default function CategoryPieChart () {
         <div css={pieChartContainerStyle}>
           <h3 className='text-center'>Spend per category</h3>
           <PieChart
+            animate='true'
             data={nonEmptyCategories}
             label={({ dataEntry }) => dataEntry.title}
-            animate='true'
             radius='30'
           />
         </div>

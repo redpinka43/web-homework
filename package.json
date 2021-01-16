@@ -6,5 +6,14 @@
   "repository": "https://github.com/DivvyPayHQ/web-homework",
   "author": "Lance Wintch <lance.wintch@divvypay.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "babel-polyfill": "^6.26.0",
+    "jest-chain": "^1.1.5",
+    "jest-expect-message": "^1.0.2",
+    "jsdom": "^16.4.0",
+    "regenerator-runtime": "^0.13.7"
+  }
 }
