@@ -3,14 +3,18 @@ by Lucia Martisovitsova
 
 Followed the front end assignment instructions and completed 3 objectives, plus some unit tests:
 * Write a basic user interface that allows users to enter, edit, and remove transactions.
+* Provide a pie chart or histogram of the spend per category.
+* Create a user setting that can convert the displayed numbers to Roman Numerals.
+
+User interface:
   ![create transaction](gifs/create_transaction.gif)
-  ![edit transaction](gifs/edit_transaction.gif)
+  ![edit transaction](gifs/editing_transaction.gif)
   ![delete transaction](gifs/delete_transaction.gif)
 
-* Provide a pie chart or histogram of the spend per category.
+Pie chart:
   ![pie chart](gifs/pie_chart.gif)
 
-* Create a user setting that can convert the displayed numbers to Roman Numerals.
+Roman numerals toggle:
   ![roman numerals toggle](gifs/roman_numerals.gif)
 
 For a higher resolution demonstration, check out [this video](https://www.youtube.com/watch?v=Ympch0Y4RwI).
