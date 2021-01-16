@@ -7,14 +7,17 @@ Followed the front end assignment instructions and completed 3 objectives, plus 
 * Create a user setting that can convert the displayed numbers to Roman Numerals.
 
 User interface:
+
   ![create transaction](gifs/create_transaction.gif)
   ![edit transaction](gifs/editing_transaction.gif)
   ![delete transaction](gifs/delete_transaction.gif)
 
 Pie chart:
+
   ![pie chart](gifs/pie_chart.gif)
 
 Roman numerals toggle:
+
   ![roman numerals toggle](gifs/roman_numerals.gif)
 
 For a higher resolution demonstration, check out [this video](https://www.youtube.com/watch?v=Ympch0Y4RwI).
