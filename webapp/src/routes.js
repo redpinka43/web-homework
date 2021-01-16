@@ -1,7 +1,6 @@
 import React, { createContext, useState } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { css } from '@emotion/core'
-import { Home } from './routes/home'
 import { Transactions } from './routes/transactions'
 import { Analytics } from './routes/analytics'
 import { Settings } from './routes/settings'

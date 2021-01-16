@@ -14,6 +14,7 @@ export default function AddTransactionForm (props) {
   const defaultFormState = {
     user_id: '',
     amount: '',
+    category: 'Other',
     credit: false,
     debit: false,
     description: '',
@@ -25,6 +26,7 @@ export default function AddTransactionForm (props) {
     variables: {
       user_id: formState.user_id,
       amount: formState.amount,
+      category: formState.category,
       credit: formState.credit,
       debit: formState.debit,
       description: formState.description,

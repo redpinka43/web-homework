@@ -75,7 +75,7 @@ const sidebarStyle = css`
 
   ul.components {
     padding: 10px 0;
-    border-bottom: 1px solid ${colors.darkGrey1};
+    // border-bottom: 1px solid ${colors.darkGrey1};
   }
 
   ul p {

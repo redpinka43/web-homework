@@ -11,6 +11,7 @@ TransactionForm.propTypes = {
 
 export default function TransactionForm (props) {
   let { formState, setFormState, formId } = props
+  formId = 'form-' + formId
 
   function get2DecimalPlaces (numStr) {
     let parsedFloat = parseFloat(numStr)
@@ -71,7 +72,7 @@ export default function TransactionForm (props) {
     return (
       <input
         css={getInputFieldCss()}
-        form={'form-' + formId}
+        form={formId}
         onChange={onChangeHandler}
         placeholder={placeholder}
         required
@@ -119,6 +120,27 @@ export default function TransactionForm (props) {
           value: formState.merchant_id
         })}
       </td>
+      <td>
+        {/* Category */ }
+        {/* eslint-disable */}
+        <select
+          form={formId}
+          onChange={(e) => setFormState({
+            ...formState,
+            category: e.target.value
+          })}
+          /* eslint-enable */
+          required
+          value={formState.category}
+        >
+          <option value='Other'>Other</option>
+          <option value='Travel'>Travel</option>
+          <option value='Food'>Food</option>
+          <option value='Supplies'>Supplies</option>
+          <option value='Consulting'>Consulting</option>
+          <option value='Real estate'>Real estate</option>
+        </select>
+      </td>
       <td>{
         // Description
         inputField({
@@ -135,7 +157,7 @@ export default function TransactionForm (props) {
         {/* Credit/Debit */}
         {/* eslint-disable */}
         <select
-          form='form1'
+          form={formId}
           onChange={(e) =>
             setCreditOrDebit(e.target.value)
           }

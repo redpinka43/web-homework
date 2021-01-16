@@ -6,9 +6,9 @@ export default function RomanNumberToggle () {
 
   return (
     <div>
-      <input onClick={() => setRomanNumber(!romanNumber)} 
-        type='checkbox' 
-        checked={romanNumber} />
+      <input checked={romanNumber}
+        onClick={() => setRomanNumber(!romanNumber)}
+        type='checkbox' />
       &nbsp;&nbsp;Use roman numerals instead of number values.
     </div>
   )

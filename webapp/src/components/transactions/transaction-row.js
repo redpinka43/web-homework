@@ -11,6 +11,7 @@ TransactionRow.propTypes = {
   transaction: PropTypes.shape({
     id: PropTypes.string,
     amount: PropTypes.number,
+    category: PropTypes.string,
     credit: PropTypes.bool,
     debit: PropTypes.bool,
     description: PropTypes.string,
@@ -26,6 +27,7 @@ export default function TransactionRow (props) {
 
   const [formState, setFormState] = useState({
     amount: transaction.amount,
+    category: transaction.category,
     credit: transaction.credit,
     debit: transaction.debit,
     description: transaction.description,
@@ -38,6 +40,7 @@ export default function TransactionRow (props) {
     variables: {
       id: transaction.id,
       amount: formState.amount,
+      category: formState.category,
       credit: formState.credit,
       debit: formState.debit,
       description: formState.description,
@@ -91,9 +94,10 @@ export default function TransactionRow (props) {
   } else {
     return (
       <tr>
-        <td>{Number(formState.amount)}</td>
+        <td>{'$' + (Number(formState.amount.toFixed(2)))}</td>
         <td>{formState.user_id}</td>
         <td>{formState.merchant_id}</td>
+        <td>{formState.category}</td>
         <td>{formState.description}</td>
         <td>{getCreditOrDebit()}</td>
         <td css={noPaddingTd}>

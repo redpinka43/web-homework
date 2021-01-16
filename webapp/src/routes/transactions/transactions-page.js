@@ -2,23 +2,9 @@ import React, { Fragment, useState } from 'react'
 import { css } from '@emotion/core'
 import TransactionsList from '../../components/transactions/transactions-list'
 import { useQuery } from 'react-apollo'
-import gql from 'graphql-tag'
+import { GET_TRANSACTIONS } from '../../utils/gql-queries'
 
 export function Transactions () {
-  const GET_TRANSACTIONS = gql`
-    query {
-      transactions {
-        id
-        amount
-        credit
-        debit
-        description
-        merchant_id
-        user_id
-      }
-    }
-  `
-
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const { loading, data, error, refetch: refreshList } = useQuery(GET_TRANSACTIONS)
 

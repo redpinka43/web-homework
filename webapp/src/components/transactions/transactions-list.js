@@ -20,6 +20,7 @@ export default function TransactionsList (props) {
       </div>
     )
   }
+
   if (props.error) {
     return props.error.message
   } else {
@@ -31,6 +32,7 @@ export default function TransactionsList (props) {
               <th scope='col'>Amount ($)</th>
               <th scope='col'>User ID</th>
               <th scope='col'>Merchant ID</th>
+              <th scope='col'>Category</th>
               <th scope='col'>Description</th>
               <th scope='col'>Credit/Debit</th>
               <th scope='col' />
@@ -50,8 +52,3 @@ export default function TransactionsList (props) {
     )
   }
 }
-
-/* ---------- Styles ----------- */
-// const aStyle = css `
-//   color: blue;
-// `

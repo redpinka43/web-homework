@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react'
+import CategoryPieChart from '../../components/analytics/category-pie-chart'
 
 export function Analytics () {
   return (
     <Fragment>
-      <div>This is the analytics page.</div>
+      <h2>Analytics</h2>
+      <CategoryPieChart />
     </Fragment>
   )
 }
