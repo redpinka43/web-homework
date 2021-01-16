@@ -1,3 +1,23 @@
+# Divvy Homework Assignment Submission
+by Lucia Martisovitsova
+
+Followed the front end assignment instructions and completed 3 objectives, plus some unit tests:
+* Write a basic user interface that allows users to enter, edit, and remove transactions.
+  ![create transaction](gifs/create_transaction.gif)
+  ![edit transaction](gifs/edit_transaction.gif)
+  ![delete transaction](gifs/delete_transaction.gif)
+
+* Provide a pie chart or histogram of the spend per category.
+  ![pie chart](gifs/pie_chart.gif)
+
+* Create a user setting that can convert the displayed numbers to Roman Numerals.
+  ![roman numerals toggle](gifs/roman_numerals.gif)
+
+For a higher resolution demonstration, check out [this video](https://www.youtube.com/watch?v=Ympch0Y4RwI).
+
+
+---------------------------------------
+
 # Divvy Homework Assignment
 
 This repository provides a starting point for a basic React + GraphQL application.
