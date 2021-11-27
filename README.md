@@ -1,5 +1,4 @@
 # Divvy Homework Assignment Submission
-by Lucia Martisovitsova
 
 Followed the front end assignment instructions and completed 3 objectives, plus some unit tests:
 * Write a basic user interface that allows users to enter, edit, and remove transactions.
